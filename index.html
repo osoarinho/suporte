@@ -36,6 +36,8 @@
                         'glow': 'glow 2s ease-in-out infinite alternate',
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
                         'shimmer': 'shimmer 3s linear infinite',
+                        'tech-pulse': 'tech-pulse 5s ease-in-out infinite',
+                        'tech-grid-move': 'tech-grid-move 20s linear infinite',
                     },
                     keyframes: {
                         float: {
@@ -53,6 +55,14 @@
                         shimmer: {
                             '0%': { backgroundPosition: '-1000px 0' },
                             '100%': { backgroundPosition: '1000px 0' },
+                        },
+                        'tech-pulse': {
+                            '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+                        },
+                        'tech-grid-move': {
+                            '0%': { transform: 'translate(0, 0)' },
+                            '100%': { transform: 'translate(50px, 50px)' },
                         }
                     }
                 }
@@ -99,9 +109,9 @@
         }
         
         .btn-primary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
-            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
+            color: #ffffff !important;
             position: relative;
             overflow: hidden;
         }
@@ -113,7 +123,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.5s;
         }
         
@@ -122,8 +132,10 @@
         }
         
         .btn-primary:hover {
-            border-color: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.8);
+            color: #ffffff !important;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
             transform: translateY(-3px);
         }
         
@@ -181,7 +193,7 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center">
                 <a href="#" class="flex items-center gap-3">
-                    <img src="https://soarinho.com/identity/logo-soarinho.png" alt="Soarinho" class="h-12 md:h-16 w-auto">
+                    <img src="https://soarinho.com/identity/logo-soarinho.png" alt="Soarinho" class="h-16 md:h-24 lg:h-28 w-auto">
                     <span class="text-white text-sm md:text-base">suporte</span>
                 </a>
                 <button id="mobile-menu-btn" class="md:hidden text-white">
@@ -208,6 +220,9 @@
                         Fale comigo
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                     </a>
+                    <a href="https://soarinho.com" class="text-gray-500 hover:text-gray-300 transition-colors text-xs opacity-60 hover:opacity-100" title="Hub Central">
+                        <i class="fas fa-home"></i>
+                    </a>
                 </nav>
             </div>
         </div>
@@ -220,6 +235,7 @@
                     <a href="#how-it-works" class="text-dark-200 hover:text-white transition-colors font-medium py-2">Como trabalho</a>
                     <!-- <a href="#testimonials" class="text-dark-200 hover:text-white transition-colors font-medium py-2">Quem confia</a> -->
                     <a href="#contact" class="text-dark-200 hover:text-white transition-colors font-medium py-2">Fale comigo</a>
+                    <a href="https://soarinho.com" class="text-gray-500 hover:text-gray-300 transition-colors text-sm py-2">Hub Central</a>
                 </div>
             </div>
         </div>
@@ -229,6 +245,11 @@
     <section class="hero min-h-screen flex items-center justify-center relative overflow-hidden pt-20" id="home">
         <div class="absolute inset-0 bg-gradient-to-br from-dark-800 via-dark-900 to-dark-900 z-0">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(40,40,60,0.2)_0%,transparent_50%),radial-gradient(circle_at_80%_20%,rgba(40,40,60,0.2)_0%,transparent_50%)]"></div>
+            <!-- Animated Tech Support Background -->
+            <div class="absolute inset-0 pointer-events-none z-0">
+                <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(100,150,255,0.1) 0%, transparent 70%); animation: tech-pulse 5s ease-in-out infinite;"></div>
+                <div class="absolute inset-0 opacity-15" style="background-image: repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,0.02) 50px, rgba(255,255,255,0.02) 52px), repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255,255,255,0.02) 50px, rgba(255,255,255,0.02) 52px); animation: tech-grid-move 20s linear infinite;"></div>
+            </div>
         </div>
         
         <div class="container mx-auto px-4 z-10 relative">
@@ -399,19 +420,13 @@
             </div>
             
             <div class="max-w-6xl mx-auto">
-                <!-- Central Hub -->
-                <div class="flex justify-center mb-12 reveal">
-                    <div class="card-effect rounded-2xl p-6 md:p-8 max-w-md text-center neon-border w-full">
-                        <div class="text-5xl text-white mb-4 animate-float">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Hub Central</h3>
-                        <p class="text-dark-300 mb-4">Navegue por todo o ecossistema</p>
-                        <a href="https://soarinho.com" class="text-dark-200 hover:text-white font-medium transition-colors text-base inline-flex items-center gap-2 group">
-                            soarinho.com
-                            <i class="fas fa-external-link-alt group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
+                <!-- Central Hub - Sutil -->
+                <div class="flex justify-center mb-8 reveal">
+                    <a href="https://soarinho.com" class="text-gray-400 hover:text-white font-medium transition-colors text-sm inline-flex items-center gap-2 group opacity-60 hover:opacity-100">
+                        <i class="fas fa-home text-xs"></i>
+                        <span>soarinho.com</span>
+                        <i class="fas fa-external-link-alt text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
                 
                 <!-- Services Grid -->
@@ -528,7 +543,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <img src="https://soarinho.com/identity/marca-soarinho.png" alt="Marca Soarinho" class="h-16 md:h-20 w-auto">
+                        <img src="https://soarinho.com/identity/marca-soarinho.png" alt="Marca Soarinho" class="h-24 md:h-32 lg:h-36 w-auto">
                     </div>
                     <p class="text-dark-400 text-sm leading-relaxed">
                         Sou o Soarinho e ofereço suporte técnico remoto personalizado. Resolvo seus problemas de computador com eficiência e segurança, sempre com uma abordagem humanizada.
