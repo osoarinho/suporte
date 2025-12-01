@@ -1,4 +1,4 @@
-# Soarinho Suporte
+# Suporte
 
 Site do serviço de suporte técnico.
 
